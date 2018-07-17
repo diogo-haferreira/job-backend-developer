@@ -28,7 +28,31 @@ Como você pode ver, nosso maior desafio está na manutenção e otimização de
 
 1) Imagine que hoje tenhamos um sistema de login e perfis de usuários. O sistema conta com mais de 10 milhões de usuários, sendo que temos um acesso concorrente de cerca de 5 mil usuários. Hoje a tela inicial do sistema se encontra muito lenta. Nessa tela é feita uma consulta no banco de dados para pegar as informações do usuário e exibi-las de forma personalizada. Quando há um pico de logins simultâneos, o carregamento desta tela fica demasiadamente lento. Na sua visão, como poderíamos iniciar a busca pelo problema, e que tipo de melhoria poderia ser feita?
 
+## Resposta
+Aumentar a disponibilidade do sistema de login nos dias de hoje é primordial e esse processo pode ser feito de varias formas e utilizando uma infinidade de tecnologia disponível no mercado.
+Uma sugestão minha seria a seguinte:
+Pensando na aplicação web (tela de login e o serviço utilizado por outros sistema) eu pensaria em algo como o cluster para mantes disponível a aplicação, justamente com a arquitetura de micro serviço para tornar as melhorias e manutenções uma coisa mais dinâmica e sem tanto impacto para sistema.
+Agora a parte de consulta para autenticação eu pensaria em algo com banco não relacional e/ou que rodem e cache. Exemplo seria o ElasticSearch e Redis. Ambos prezam por velocidade pensando na alta demanda de consulta. Esta estrutura sendo mantida atualizada com cargas constantes garante o desempenho ideal para dar vazão as solicitações feitas.
+Poderia utilizar de mensageria para controle das solicitações de autenticação, mantendo a fila de prioridades e tornar a escalabilidade mais viável. Não apenas subindo processamento e memorias das maquinas, mas também podendo subir novas instancias do serviço de autenticação que irão verificar as solicitações e, em paralelo, ajudar na vazão destas solicitações.
+Com toda essa estrutura rodando em container tonar rápido, prático e dinâmico esse sistema.
+A utilização do container para manter essa aplicação no ar é muito interessante, pois por se tratar de basicamente de consultas. A criação de imagens para cada serviço torna a manutenção muito pratica. Pois poderia aumentar sazonalmente os serviços para atender uma determinada demanda e para qualquer problema que ocorra em relação a servidores, bastaria apenas fazer um novo deploy da imagem referente aquele serviço e pronto você terá um maquina nova para atender aquela demanda.
+Acredito que com essa estrutura escalabilidade ficaria totalmente no controle da equipe e podendo atender e dar vazão a toda demanda.
+Vários ambientes em nuvem comportam essa estrutura. Por experiência pratica acredito nesta solução.
+
+
 2) Com base no problema anterior, gostaríamos que você codificasse um novo sistema de login para muitos usuários simultâneos e carregamento da tela inicial. Lembre-se que é um sistema web então teremos conteúdo estático e dinâmico. Leve em consideração também que na empresa existe um outro sistema que também requisitará os dados dos usuários, portanto, este sistema deve expor as informações para este outro sistema de alguma maneira.
+
+## Resposta
+Devido a ocorrência de casos de utilização, em projetos das empresas contratantes, de códigos desenvolvidos por candidatos em testes de processo seletivo, igual a este que estou participando não estarei codificando esta solução.
+Complemento de código ou resolver problemas pontuais faz sentido mas desenvolver toda uma solução é trabalhar muito e entregar um produto.
+Não vejo problema em relatar, como na questão anterior, toda uma solução, mesmo que para alguns isso também faria parte do projeto.
+
+Acredito que colocar em código toda a estrutura que eu acredito que seja viável para esta situação, vai gerar um produto.
+Este trabalho é o eu “ganha pão” e não faz sentido algum eu “dar” esta solução.
+Estaria sendo incoerente e desrespeitando minha classe e meus colegas.
+Espero que entendam meu ponto de vista.
+Aguardo retorno.
+
 
 ### O que nós esperamos do seu teste
 
